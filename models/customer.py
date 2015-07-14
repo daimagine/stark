@@ -2,7 +2,6 @@ from sqlalchemy import Column, String, BigInteger, DateTime
 from sqlalchemy.schema import Sequence
 from base import Base
 
-from marshmallow import Schema, fields, pprint
 
 class Customer(Base):
 	__tablename__ = 'customer'
@@ -12,12 +11,3 @@ class Customer(Base):
 	password_1 = Column(String(1024))
 	client_token = Column(String(1024))
 	client_token_valid_time = Column(DateTime(timezone=False))
-
-
-class CustomerSchema(Schema):
-	class Meta:
-		fields = ('id', 'name', 'email')
-
-class CustomerAuthSchema(Schema):
-	class Meta:
-		fields = ('id', 'name', 'email', 'client_token', 'client_token_valid_time')	

@@ -3,10 +3,6 @@ from sqlalchemy.schema import Sequence, UniqueConstraint
 from sqlalchemy.orm import relationship, backref
 from base import Base
 
-from marshmallow import Schema, fields, pprint
-
-from product import Product, ProductSchema
-from customer import Customer, CustomerSchema
 
 class Affiliate(Base):
 	__tablename__ = 'affiliate'
@@ -19,10 +15,3 @@ class Affiliate(Base):
 	customer = relationship("Customer", backref="affiliates")
 
 	UniqueConstraint('product_id', 'customer_id', name='product_customer_affiliate_unique_constraint')
-
-
-class AffiliateSchema(Schema):
-	product = fields.Nested(ProductSchema)
-	customer = fields.Nested(CustomerSchema)
-	class Meta:
-		fields = ('id', 'product', 'customer')
