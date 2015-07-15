@@ -23,9 +23,26 @@ class AffiliateCustomerSchema(Schema):
 
 
 """
+Product Category Schema
+"""
+class CategorySchema(Schema):
+    class Meta:
+        fields = (
+            'id', 
+            'name', 
+            'description', 
+            'need_logistic', 
+            'downloadable', 
+            'stock_related', 
+            'have_expiry_date'
+        )
+
+
+"""
 Product Schemas
 """
 class ProductSchema(Schema):
+    category = fields.Nested(CategorySchema)
     customer = fields.Nested(CustomerSchema)
     affiliates = fields.Nested(AffiliateCustomerSchema, many=True)
     class Meta:
@@ -41,7 +58,8 @@ class ProductSchema(Schema):
             'affiliates',
             'image',
             'description',
-            'headline'
+            'headline',
+            'category'
         )
 
 
