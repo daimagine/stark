@@ -1,12 +1,37 @@
 from marshmallow import Schema, fields, pprint
 
+"""
+Socmed Schemas
+"""
+class SocialMediaSchema(Schema):
+    class Meta:
+        fields = (
+            'id', 
+            'name',
+        )
+
+
+class CustomerSocmedAccountSchema(Schema):
+    social_media = fields.Nested(SocialMediaSchema)
+    class Meta:
+        fields = (
+            'id', 
+            'social_id', 
+            'social_name',
+            'image',
+            'type',
+            'social_media'
+        )
+
 
 """
 Customer Schemas
 """
 class CustomerSchema(Schema):
+    socmed_accounts = fields.Nested(CustomerSocmedAccountSchema, many=True)
     class Meta:
-        fields = ('id', 'name', 'email')
+        fields = ('id', 'name', 'email', 'socmed_accounts')
+
 
 class CustomerAuthSchema(Schema):
     class Meta:
@@ -70,4 +95,9 @@ class AffiliateSchema(Schema):
     product = fields.Nested(ProductSchema)
     customer = fields.Nested(CustomerSchema)
     class Meta:
-        fields = ('id', 'product', 'customer')
+        fields = ('id', 'product', 'customer', 'headline', 'product_page')
+
+
+class AffiliateInfoSchema(Schema):
+    class Meta:
+        fields = ('id', 'product_id', 'customer_id', 'headline', 'product_page')

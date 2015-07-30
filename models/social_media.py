@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, BigInteger
+from sqlalchemy import Column, String, BigInteger, Integer
 from sqlalchemy.schema import Sequence
 from base import Base
 
@@ -10,8 +10,3 @@ class SocialMedia(Base):
 	name = Column(String(255), nullable=False)
 	consumer_key = Column(String(255), nullable=False)
 	consumer_secret = Column(String(255), nullable=False)
-
-
-class SocialMediaSchema(Schema):
-	class Meta:
-		fields = ('id', 'name')

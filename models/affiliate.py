@@ -13,5 +13,7 @@ class Affiliate(Base):
     # customer relationship
 	customer_id = Column(BigInteger, ForeignKey('customer.id'))
 	customer = relationship("Customer", backref="affiliates")
+	headline = Column(String(1024))
+	product_page = Column(String(1024))
 
 	UniqueConstraint('product_id', 'customer_id', name='product_customer_affiliate_unique_constraint')

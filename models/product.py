@@ -28,3 +28,4 @@ class Product(Base):
     image = Column(String(1024))
     description = Column(String(1024))
     headline = Column(String(1024))
+    product_page = Column(String(1024))
