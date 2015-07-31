@@ -84,6 +84,7 @@ class ProductSchema(Schema):
             'image',
             'description',
             'headline',
+            'product_page',
             'category'
         )
 
