@@ -10,3 +10,5 @@ class SocialMedia(Base):
 	name = Column(String(255), nullable=False)
 	consumer_key = Column(String(255), nullable=False)
 	consumer_secret = Column(String(255), nullable=False)
+	plugin = Column(String(200), nullable=False)
+	plugin_package = Column(String(200), nullable=False)
