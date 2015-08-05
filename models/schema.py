@@ -30,7 +30,22 @@ Customer Schemas
 class CustomerSchema(Schema):
     socmed_accounts = fields.Nested(CustomerSocmedAccountSchema, many=True)
     class Meta:
-        fields = ('id', 'name', 'email', 'socmed_accounts')
+        fields = (
+            'id', 
+            'name', 
+            'email', 
+            'mobile_no',
+            'phone_1',
+            'phone_2',
+            'phone_3',
+            'address',
+            'bank_account_no',
+            'bank_account_name',
+            'bank_name',
+            'email_verified',
+            'phone_verified',
+            'socmed_accounts'
+        )
 
 
 class CustomerAuthSchema(Schema):
@@ -45,6 +60,18 @@ class AffiliateCustomerSchema(Schema):
     customer = fields.Nested(CustomerSchema)
     class Meta:
         fields = ('id', 'customer')
+
+
+"""
+Product Images Schema
+"""
+class ProductImagesSchema(Schema):
+    class Meta:
+        fields = (
+            'id', 
+            'link', 
+            'is_primary'
+        )
 
 
 """
@@ -70,6 +97,7 @@ class ProductSchema(Schema):
     category = fields.Nested(CategorySchema)
     customer = fields.Nested(CustomerSchema)
     affiliates = fields.Nested(AffiliateCustomerSchema, many=True)
+    product_images = fields.Nested(ProductImagesSchema, many=True)
     class Meta:
         fields = (
             'id',
@@ -85,7 +113,8 @@ class ProductSchema(Schema):
             'description',
             'headline',
             'product_page',
-            'category'
+            'category',
+            'product_images'
         )
 
 
