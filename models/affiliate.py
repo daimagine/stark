@@ -15,5 +15,6 @@ class Affiliate(Base):
 	customer = relationship("Customer", backref="affiliates")
 	headline = Column(String(1024))
 	product_page = Column(String(1024))
+	token = Column(String(200), nullable=False)
 
 	UniqueConstraint('product_id', 'customer_id', name='product_customer_affiliate_unique_constraint')

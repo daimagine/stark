@@ -126,9 +126,9 @@ class AffiliateSchema(Schema):
     product = fields.Nested(ProductSchema)
     customer = fields.Nested(CustomerSchema)
     class Meta:
-        fields = ('id', 'product', 'customer', 'headline', 'product_page')
+        fields = ('id', 'product', 'customer', 'headline', 'product_page', 'token')
 
 
 class AffiliateInfoSchema(Schema):
     class Meta:
-        fields = ('id', 'product_id', 'customer_id', 'headline', 'product_page')
+        fields = ('id', 'product_id', 'customer_id', 'headline', 'product_page', 'token')
