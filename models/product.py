@@ -19,6 +19,7 @@ class Product(Base):
     category_id = Column(Integer, ForeignKey('category.id'))
     category = relationship(Category, backref="products")
     # fields
+    token = Column(String(200), nullable=False)
     name = Column(String(255), nullable=False)
     is_affiliate_ready = Column(Boolean, default=False)
     affiliate_percentage = Column(Numeric(3, 2))

@@ -102,6 +102,7 @@ class ProductSchema(Schema):
         fields = (
             'id',
             'name',
+            'token',
             'price',
             'is_affiliate_ready',
             'affiliate_percentage',
