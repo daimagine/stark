@@ -15,7 +15,7 @@ class Product(Base):
     # customer relationship
     customer_id = Column(BigInteger, ForeignKey('customer.id'))
     customer = relationship("Customer", backref="products")
-    #category relationship
+    # category relationship
     category_id = Column(Integer, ForeignKey('category.id'))
     category = relationship(Category, backref="products")
     # fields

@@ -47,6 +47,24 @@ class CustomerSchema(Schema):
             'socmed_accounts'
         )
 
+class CustomerCompactSchema(Schema):
+    class Meta:
+        fields = (
+            'id', 
+            'name', 
+            'email', 
+            'mobile_no',
+            'phone_1',
+            'phone_2',
+            'phone_3',
+            'address',
+            'bank_account_no',
+            'bank_account_name',
+            'bank_name',
+            'email_verified',
+            'phone_verified'
+        )
+
 
 class CustomerAuthSchema(Schema):
     class Meta:
@@ -118,6 +136,29 @@ class ProductSchema(Schema):
             'product_images'
         )
 
+class ProductCompactSchema(Schema):
+    category = fields.Nested(CategorySchema)
+    customer = fields.Nested(CustomerCompactSchema)
+    product_images = fields.Nested(ProductImagesSchema, many=True)
+    class Meta:
+        fields = (
+            'id',
+            'name',
+            'token',
+            'price',
+            'is_affiliate_ready',
+            'affiliate_percentage',
+            'affiliate_fee',
+            'affiliate_fee_type',
+            'customer',
+            'image',
+            'description',
+            'headline',
+            'product_page',
+            'category',
+            'product_images'
+        )
+
 
 """
 Affiliate Schema
@@ -132,3 +173,20 @@ class AffiliateSchema(Schema):
 class AffiliateInfoSchema(Schema):
     class Meta:
         fields = ('id', 'product_id', 'customer_id', 'headline', 'product_page', 'token')
+
+
+"""
+Transactions Schemas
+"""
+class TransactionsSalesOverviewSchema(Schema):
+    product = fields.Nested(ProductCompactSchema)
+    customer = fields.Nested(CustomerCompactSchema)
+    affiliate = fields.Nested(AffiliateInfoSchema)
+    class Meta:
+        fields = (
+            'id',
+            'customer',
+            'product',
+            'affiliate',
+            'affiliator_received'
+        )
