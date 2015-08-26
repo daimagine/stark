@@ -22,7 +22,7 @@ class Product(Base):
     token = Column(String(200), nullable=False)
     name = Column(String(255), nullable=False)
     is_affiliate_ready = Column(Boolean, default=False)
-    affiliate_percentage = Column(Numeric(3, 2))
+    affiliate_percentage = Column(Numeric(5, 2))
     affiliate_fee = Column(Numeric(12, 2), default=0.00)
     affiliate_fee_type = Column(String(1))
     price = Column(Numeric(12, 2))
