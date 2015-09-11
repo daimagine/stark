@@ -10,6 +10,17 @@ class SocialMediaSchema(Schema):
             'name',
         )
 
+class SocialMediaSecretSchema(Schema):
+    class Meta:
+        fields = (
+            'id', 
+            'name',
+            'consumer_key',
+            'consumer_secret',
+            'interface',
+            'interface_package'
+        )
+
 
 class CustomerSocmedAccountSchema(Schema):
     social_media = fields.Nested(SocialMediaSchema)
@@ -23,6 +34,19 @@ class CustomerSocmedAccountSchema(Schema):
             'social_media'
         )
 
+class CustomerSocmedAccountTokenSchema(Schema):
+    social_media = fields.Nested(SocialMediaSecretSchema)
+    class Meta:
+        fields = (
+            'id', 
+            'social_id', 
+            'social_name',
+            'image',
+            'type',
+            'social_media',
+            'token',
+            'secret'
+        )
 
 """
 Customer Schemas
