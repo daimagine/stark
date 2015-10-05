@@ -212,5 +212,8 @@ class TransactionsSalesOverviewSchema(Schema):
             'customer',
             'product',
             'affiliate',
-            'affiliator_received'
+            'affiliator_received',
+            'trans_time',
+            'total_amount',
+            'amount',
         )

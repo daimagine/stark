@@ -1,5 +1,5 @@
 
-from sqlalchemy import Column, String, BigInteger, Numeric, Boolean, ForeignKey, Integer
+from sqlalchemy import Column, String, BigInteger, Numeric, Boolean, ForeignKey, Integer, DateTime
 from sqlalchemy.schema import Sequence
 from sqlalchemy.orm import relationship, backref
 from base import Base
@@ -27,5 +27,6 @@ class Transactions(Base):
     amount = Column(Numeric(12, 2))
     total_amount = Column(Numeric(12, 2))
     fee = Column(Numeric(12, 2))
+    trans_time = Column(DateTime)
 
     affiliator_received = Column(Numeric(12, 2), default=0)
